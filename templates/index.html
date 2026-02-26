@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Bloco de Notas</title>
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+    <style>
+        body{
+            font-family: sans-serif;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+        #editor-container {
+            height: 300px;
+            background: white;
+        }
+        .container{
+            max-width: 800px;
+            margin: auto;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h2>📝 Meu Bloco de Notas - By Dieff</h2>
+    <div id="editor-container"></div>
+    <button onclick="salvarTexto()">Salvar Texto</button>
+</div>
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+<script>
+  // Inicializa o editor com as ferramentas que você quer
+  var quill = new Quill('#editor-container', {
+    theme: 'snow',
+    modules: {
+        toolbar: [
+            ['bold', 'italic', 'underline', 'strike'], // As formatações que você pediu
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            ['clean'] // Limpar formatação
+        ]
+    }
+  });
+
+  function salvarTexto() {
+    var conteudo = quill.root.innerHTML; // Pega o texto com o HTML (tags de negrito, etc.)
+    console.log("Conteúdo para salvar:", conteudo);
+    alert("Conteúdo capturado! Veja o console (F12).");
+    // Próximo passo: enviar isso para o Python via fetch()
+  }
+</script>
+
+</body>
+</html>
